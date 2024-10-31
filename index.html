@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width="> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>Барсаков Максим Александрович – онлайн-визитка</title>
+
+	<style>
+		@font-face {
+			font-family: "TT Fors";
+			src: url("./font/TTFors-Regular.woff2") format("woff2"), url("./font/TTFors-Regular.woff") format("woff");
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "TT Fors";
+			src: url("./font/TTFors-Light.woff2") format("woff2"), url("./font/TTFors-Light.woff") format("woff");
+			font-weight: 300;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		:root {
+			--px32: 8.142vw;
+			--px28: 7.125vw;
+			--px24: 6.107vw;
+			--px20: 5.089vw;
+			--px16: 4.071vw;
+			--px12: 3.053vw;
+			--px8: 2.036vw;
+			--bg-items: rgba(35, 35, 35, 0.5);
+		}
+
+		* {
+			padding: 0px;
+			margin: 0px;
+			border: 0px;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		*::before,
+		*::after {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html,
+		body {
+			min-width: 320px;
+			width: 100%;
+		}
+
+		body {
+			line-height: 1;
+			font-family: "TT Fors", sans-serif;
+			font-size: 14px;
+			padding: 16px 32px;
+			color: #fff;
+			background: #000;
+			position: relative;
+			background-image: url("../img/bg.jpg");
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-position: top center;
+			background-size: cover;
+		}
+
+		button {
+			cursor: pointer;
+			color: inherit;
+			background: transparent;
+			-webkit-appearance: button;
+			-moz-appearance: button;
+			appearance: button;
+		}
+
+		button:active,
+		button:focus {
+			outline: none !important;
+		}
+
+		button::-moz-focus-inner {
+			border: 0 !important;
+		}
+
+		a {
+			cursor: pointer;
+			color: inherit;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-user-drag: none;
+		}
+
+		a:link,
+		a:visited {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		ul li {
+			list-style: none;
+		}
+
+		img {
+			display: inline-block;
+			max-width: 100%;
+			border: 0;
+			vertical-align: middle;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: inherit;
+			font-size: inherit;
+		}
+
+		/* //========================================================================================================================================================  */
+		.section {
+			height: 100%;
+			transition-behavior: allow-discrete;
+			display: none;
+			opacity: 0;
+			-webkit-transition: opacity 0.3s ease 0s;
+			transition: opacity 0.3s ease 0s;
+		}
+
+		.section.show {
+			display: block;
+			opacity: 1;
+		}
+
+		@starting-style {
+			.section.show {
+				opacity: 0;
+			}
+		}
+
+		.section__body {
+			height: 80dvh;
+			min-height: 420px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+		}
+
+		@media (min-width: 767.98px) {
+			.section__body {
+				height: auto;
+			}
+		}
+
+		.section__footer {
+			margin-top: var(--px16);
+		}
+
+		.titles {
+			text-align: center;
+		}
+
+		.titles h1 {
+			font-size: var(--px32);
+			font-weight: 400;
+			line-height: 100%;
+			letter-spacing: -0.03em;
+		}
+
+		.titles h2 {
+			font-size: var(--px20);
+			font-weight: 300;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			margin-top: var(--px8);
+			text-wrap: balance;
+		}
+
+		.titles a {
+			display: block;
+			margin-top: var(--px8);
+			font-size: var(--px32);
+			font-weight: 400;
+			line-height: 100%;
+			letter-spacing: -0.01em;
+		}
+
+		.link-row {
+			margin-top: var(--px16);
+		}
+
+		.link-row ul {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			gap: var(--px8);
+		}
+
+		.link-row ul li {
+			-webkit-box-flex: 1;
+			-ms-flex: 1 1 calc(33.33333% - var(--px8) * 2 / 3);
+			flex: 1 1 calc(33.33333% - var(--px8) * 2 / 3);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+
+		.link-row ul li a,
+		.link-row ul li button {
+			width: 100%;
+			padding: 3.053vw 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			text-align: center;
+			background-color: var(--bg-items);
+			font-weight: 300;
+			font-size: var(--px16);
+			line-height: 100%;
+			letter-spacing: -0.01em;
+			text-transform: lowercase;
+		}
+
+		.link-row ul li a::after,
+		.link-row ul li button::after {
+			content: "";
+			width: var(--px8);
+			height: var(--px8);
+			display: block;
+			margin-left: calc(var(--px8) / 2);
+			background-image: url("./img/icons/arrow-top-right.svg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+
+		.link-row ul li button {
+			max-width: 144px;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: reverse;
+			-ms-flex-direction: row-reverse;
+			flex-direction: row-reverse;
+		}
+
+		.link-row ul li button:after {
+			margin-left: 0px;
+			margin-right: var(--px8);
+			-webkit-transform: rotate(-135deg);
+			-ms-transform: rotate(-135deg);
+			transform: rotate(-135deg);
+		}
+
+		.link-grid {
+			margin: var(--px16) 0px;
+		}
+
+		.link-grid ul {
+			gap: var(--px8);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+		}
+
+		.link-grid ul li {
+			-webkit-box-flex: 1;
+			-ms-flex: 1 1 calc(50% - var(--px8) / 2);
+			flex: 1 1 calc(50% - var(--px8) / 2);
+		}
+
+		.link-grid ul li a {
+			position: relative;
+			width: 100%;
+			padding: calc(var(--px8) * 3) 0px var(--px8) 0px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			text-align: center;
+			background-color: var(--bg-items);
+			font-size: var(--px16);
+			line-height: 150%;
+			letter-spacing: -0.01em;
+		}
+
+		.link-grid ul li a img {
+			width: var(--px32);
+			height: var(--px32);
+			margin-bottom: var(--px8);
+			-o-object-fit: contain;
+			object-fit: contain;
+			pointer-events: none;
+		}
+
+		.link-grid ul li a::after {
+			content: "";
+			position: absolute;
+			top: var(--px8);
+			right: var(--px8);
+			width: var(--px8);
+			height: var(--px8);
+			display: block;
+			background-image: url("./img/icons/arrow-top-right.svg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+
+		.link-main ul li {
+			-webkit-box-flex: 0;
+			-ms-flex: 0 0 100%;
+			flex: 0 0 100%;
+		}
+
+		.link-main ul li:not(:last-child) {
+			margin-bottom: 26px;
+		}
+
+		.link-main ul li a {
+			width: 100%;
+			display: block;
+			text-align: center;
+			font-weight: 400;
+			font-size: var(--px28);
+			line-height: 100%;
+			letter-spacing: -0.01em;
+		}
+
+		.link-main ul li a span {
+			margin-top: calc(var(--px8) / 2);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			font-weight: 300;
+			line-height: 100%;
+			font-size: var(--px16);
+			text-transform: lowercase;
+			color: #c3c3c3;
+		}
+
+		.link-main ul li a span::after {
+			content: "";
+			width: var(--px8);
+			height: var(--px8);
+			display: block;
+			margin-left: calc(var(--px8) / 2);
+			background-image: url("./img/icons/arrow-top-right.svg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+
+		.section__footer .link-main ul li a {
+			font-size: var(--px24);
+		}
+
+		.section__footer .link-main ul li a span::after {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+
+	<main>
+		<section class="section show" data-screen-block="screen-1">
+			<div class="section__body">
+				<div class="titles">
+					<h1>Барсаков Максим Александрович</h1>
+					<h2>Пластический хирург, заведующий отделением</h2>
+					<a href="tel:+79110836085" aria-label="Позвонить врачу">+7 911 083-60-85</a>
+				</div>
+
+				<div class="link-row">
+					<ul>
+						<li>
+							<a href="https://t.me/+79110836085" target="_blank" aria-label="Чат в Telegram">Telegram</a>
+						</li>
+						<li>
+							<a href="https://api.whatsapp.com/send?phone=79110836085" target="_blank"
+								aria-label="Чат в WhatsApp">WhatsApp</a>
+						</li>
+						<li>
+							<a href="tel:+79110836085" aria-label="Позвонить врачу">Телефон</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="link-grid">
+					<ul>
+						<li>
+							<a href="https://www.instagram.com/maksim_barsakov/" target="_blank" aria-label="Instagram"
+								data-screen-btn="screen-2">
+								<img src="./img/icons/inst.svg" alt="Иконка Instagram">
+								@barsakov_maksim
+							</a>
+						</li>
+						<li>
+							<a href="https://t.me/doctor_barsakov" target="_blank" aria-label="Telegram">
+								<img src="./img/icons/tg.svg" alt="Иконка Telegram">
+								@doctor_barsakov
+							</a>
+						</li>
+						<li>
+							<a href="https://vk.com/dr_plastic" target="_blank" aria-label="ВКонтакте">
+								<img src="./img/icons/vk.svg" alt="Иконка ВКонтакте">
+								@dr_plastic
+							</a>
+						</li>
+						<li>
+							<a href="https://youtube.com/@dr.barsakov" target="_blank" aria-label="YouTube">
+								<img src="./img/icons/yt.svg" alt="Иконка YouTube">
+								@doctor-barsakov
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="link-main">
+					<ul>
+						<li>
+							<a href="https://dr.barsakov.com" target="_blank" aria-label="Перейти на сайт">
+								dr.barsakov.com
+								<span>перейти на сайт</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="section__footer">
+				<div class="link-main">
+					<ul>
+						<li>
+							<a href="tel:+79819869077" aria-label="Позвонить администратору">
+								+7 981 986-90-77
+								<span>администратор</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="link-row">
+					<ul>
+						<li>
+							<a href="https://api.whatsapp.com/send?phone=79819869077" target="_blank"
+								aria-label="Чат в WhatsApp">WhatsApp</a>
+						</li>
+						<li>
+							<a href="tel:+79819869077" aria-label="Позвонить администратору">Телефон</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" data-screen-block="screen-2">
+			<div class="section__body">
+				<div class="link-main">
+					<ul>
+						<li>
+							<a href="#" target="_blank" aria-label="Instagram">
+								@barskov_maksim
+								<span>Instagram</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" target="_blank" aria-label="Instagram-канал про маммопластику">
+								@nazvanie_profila
+								<span>Instagram-канал <br> про маммопластику</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="section__footer">
+				<div class="link-row">
+					<ul>
+						<li>
+							<button type="button" aria-label="Вернуться на главную" data-screen-btn="screen-1">На
+								главную</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		// Функция для обновления классов на основе сравнения атрибутов
+		function updateSectionClasses(activeScreen) {
+			document.querySelectorAll('.section').forEach(section => {
+				const screenBlock = section.dataset.screenBlock;
+				section.classList.remove('show');
+				if (screenBlock === activeScreen) {
+					section.classList.add('show');
+				}
+			});
+		}
+
+		document.addEventListener('click', (event) => {
+			if (event.target.matches('[data-screen-btn]')) {
+				event.preventDefault();
+				// Получаем значение data-screen-btn у нажатой кнопки
+				const activeScreen = event.target.dataset.screenBtn;
+				// Обновляем классы секций
+				updateSectionClasses(activeScreen);
+			}
+		});
+
+		//========================================================================================================================================================
+		document.addEventListener('DOMContentLoaded', function () {
+			// Запуск анимаций по конфигурации
+			animationConfig.forEach(config => {
+				revealOnScroll({
+					elements: config.elements,
+					duration: config.duration || 0.5,
+					delay: config.delay || 0.2,
+					direction: config.direction || 'bottom-up',
+				});
+			});
+		});
+
+		const animationConfig = [
+			{ elements: '.titles', delay: 0.2 },
+			{ elements: '.link-row', delay: 0.4 },
+			{ elements: '.link-grid', delay: 0.6 },
+			{ elements: '.link-main', delay: 0.8 },
+			{ elements: '.section__footer', delay: 1 },
+		];
+
+		// Функция для плавного появления элементов на странице
+		function revealOnScroll({ elements, duration, delay, direction }) {
+			const items = document.querySelectorAll(elements);
+
+			// Определяем свойства для каждой анимации
+			const animationPropsMap = {
+				'bottom-up': { from: { opacity: 0, transform: 'translateY(20px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+				'up-bottom': { from: { opacity: 0, transform: 'translateY(-20px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+				'left-right': { from: { opacity: 0, transform: 'translateX(-20px)' }, to: { opacity: 1, transform: 'translateX(0)' } },
+				'right-left': { from: { opacity: 0, transform: 'translateX(20px)' }, to: { opacity: 1, transform: 'translateX(0)' } },
+				'fade': { from: { opacity: 0 }, to: { opacity: 1 } },
+				'scale': { from: { transform: 'scale(0)', opacity: 0 }, to: { transform: 'scale(1)', opacity: 1 } },
+			};
+
+			// Настройки Intersection Observer
+			const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+			items.forEach(item => {
+				// Сохраняем начальные стили элемента
+				item.setAttribute('data-original-style', item.getAttribute('style') || '');
+				// Применяем начальные стили для анимации
+				const { from } = animationPropsMap[direction.replace('--every', '')] || { from: {} };
+				Object.assign(item.style, from);
+				// Добавляем плавность изменения стилей
+				item.style.transition = `all ${duration}s ease`;
+				// Устанавливаем атрибут, чтобы отслеживать, выполнена ли анимация
+				item.setAttribute('data-animation', 'false');
+			});
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry, index) => {
+					if (entry.isIntersecting && entry.target.getAttribute('data-animation') === 'false') {
+						// Отмечаем, что анимация для этого элемента началась
+						entry.target.setAttribute('data-animation', 'true');
+
+						const animationProps = animationPropsMap[direction.replace('--every', '')];
+						if (animationProps) {
+							// Рассчитываем окончательную задержку для текущего элемента
+							const animationDelay = delay + (direction.includes('--every') ? delay * index : 0);
+
+							setTimeout(() => {
+								// Применяем конечные стили
+								Object.assign(entry.target.style, animationProps.to);
+
+								// Восстанавливаем начальные стили после завершения анимации
+								setTimeout(() => {
+									entry.target.setAttribute('style', entry.target.getAttribute('data-original-style'));
+								}, duration * 1000);
+							}, animationDelay * 1000);
+						}
+
+						// Перестаём наблюдать за элементом после начала анимации
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			// Начинаем отслеживать каждый элемент
+			items.forEach(item => observer.observe(item));
+		}
+	</script>
+
+</body>
+
+</html>

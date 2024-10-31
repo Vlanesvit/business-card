@@ -1,0 +1,350 @@
+@font-face {
+	font-family: 'TT Fors';
+	src: url('./font/TTFors-Regular.woff2') format('woff2'),
+		url('./font/TTFors-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'TT Fors';
+	src: url('./font/TTFors-Light.woff2') format('woff2'),
+		url('./font/TTFors-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--px32: 8.142vw;
+	--px28: 7.125vw;
+	--px24: 6.107vw;
+	--px20: 5.089vw;
+	--px16: 4.071vw;
+	--px12: 3.053vw;
+	--px8: 2.036vw;
+	--bg-items: rgba(35, 35, 35, 0.5)
+}
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+*::before,
+*::after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	min-width: 320px;
+	width: 100%;
+}
+
+body {
+	line-height: 1;
+	font-family: "TT Fors", sans-serif;
+	font-size: 14px;
+	padding: 16px 32px;
+	color: #fff;
+	background: #000;
+	position: relative;
+	background-image: url('../img/bg.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background: transparent;
+	-webkit-appearance: button;
+	appearance: button;
+}
+
+button:active,
+button:focus {
+	outline: none !important;
+}
+
+button::-moz-focus-inner {
+	border: 0 !important;
+}
+
+a {
+	cursor: pointer;
+	color: inherit;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	display: inline-block;
+	max-width: 100%;
+	border: 0;
+	vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+/* //========================================================================================================================================================  */
+.section {
+	height: 100%;
+	transition-behavior: allow-discrete;
+	display: none;
+	opacity: 0;
+	transition: opacity 0.3s ease 0s;
+
+	&.show {
+		display: block;
+		opacity: 1;
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
+}
+
+.section__body {
+	height: 80dvh;
+	min-height: 420px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	@media (min-width:767.98px) {
+		height: auto;
+	}
+}
+
+.section__footer {
+	margin-top: var(--px16);
+}
+
+.titles {
+	text-align: center;
+
+	h1 {
+		font-size: var(--px32);
+		font-weight: 400;
+		line-height: 100%;
+		letter-spacing: -0.03em;
+	}
+
+	h2 {
+		font-size: var(--px20);
+		font-weight: 300;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		margin-top: var(--px8);
+		text-wrap: balance;
+	}
+
+	a {
+		display: block;
+		margin-top: var(--px8);
+		font-size: var(--px32);
+		font-weight: 400;
+		line-height: 100%;
+		letter-spacing: -0.01em;
+	}
+}
+
+.link-row {
+	margin-top: var(--px16);
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--px8);
+
+		li {
+			flex: 1 1 calc(33.33333% - ((var(--px8) * 2) / 3));
+			display: flex;
+			justify-content: center;
+
+			a,
+			button {
+				width: 100%;
+				padding: 3.053vw 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				background-color: var(--bg-items);
+				font-weight: 300;
+				font-size: var(--px16);
+				line-height: 100%;
+				letter-spacing: -0.01em;
+				text-transform: lowercase;
+
+				&::after {
+					content: '';
+					width: var(--px8);
+					height: var(--px8);
+					display: block;
+					margin-left: calc(var(--px8) / 2);
+					background-image: url('./img/icons/arrow-top-right.svg');
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: contain;
+				}
+			}
+
+			button {
+				max-width: 144px;
+				flex-direction: row-reverse;
+
+				&:after {
+					margin-left: 0px;
+					margin-right: var(--px8);
+					transform: rotate(-135deg);
+				}
+			}
+		}
+	}
+}
+
+.link-grid {
+	margin: var(--px16) 0px;
+
+	ul {
+		gap: var(--px8);
+		display: flex;
+		flex-wrap: wrap;
+
+		li {
+			flex: 1 1 calc(50% - (var(--px8) / 2));
+
+			a {
+				position: relative;
+				width: 100%;
+				padding: calc(var(--px8) * 3) 0px var(--px8) 0px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				background-color: var(--bg-items);
+				font-size: var(--px16);
+				line-height: 150%;
+				letter-spacing: -0.01em;
+
+				img {
+					width: var(--px32);
+					height: var(--px32);
+					margin-bottom: var(--px8);
+					object-fit: contain;
+					pointer-events: none;
+				}
+
+				&::after {
+					content: '';
+					position: absolute;
+					top: var(--px8);
+					right: var(--px8);
+					width: var(--px8);
+					height: var(--px8);
+					display: block;
+					background-image: url('./img/icons/arrow-top-right.svg');
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: contain;
+				}
+			}
+		}
+	}
+}
+
+.link-main {
+	ul {
+		li {
+			flex: 0 0 100%;
+
+			&:not(:last-child) {
+				margin-bottom: 26px;
+			}
+
+			a {
+				width: 100%;
+				display: block;
+				text-align: center;
+				font-weight: 400;
+				font-size: var(--px28);
+				line-height: 100%;
+				letter-spacing: -0.01em;
+
+				span {
+					margin-top: calc(var(--px8) / 2);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: 300;
+					line-height: 100%;
+					font-size: var(--px16);
+					text-transform: lowercase;
+					color: #c3c3c3;
+
+					&::after {
+						content: '';
+						width: var(--px8);
+						height: var(--px8);
+						display: block;
+						margin-left: calc(var(--px8) / 2);
+						background-image: url('./img/icons/arrow-top-right.svg');
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: contain;
+					}
+				}
+			}
+
+			.section__footer & {
+				a {
+					font-size: var(--px24);
+
+					span {
+						&::after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
